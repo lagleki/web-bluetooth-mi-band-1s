@@ -65,7 +65,7 @@ function handleHR(HRCharacteristic) {
   HRCharacteristic.addEventListener('characteristicvaluechanged', event => {
     var data = event.target.value;
     //var steps = miBand.parseSteps(data);
-    console.debug('NOTIFY', HRCharacteristic.uuid, data);
+    console.log('NOTIFY', data);
 
     //var today = new Date().toJSON().substr(0, 10);
     // localStorage.setItem(today, (steps - offset > 0) ? steps - offset : steps);
