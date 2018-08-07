@@ -48,6 +48,7 @@ statusText.addEventListener('click', function () {
         return Promise.resolve();
       })
       .then(() => miBand.startNotificationsSteps().then(handleSteps))
+      .then(() => miBand.startNotificationsHR().then(handleHR))
       .catch(error => {
         statusText.textContent = error;
       });
@@ -56,7 +57,23 @@ statusText.addEventListener('click', function () {
 
 function handleNotifications(notifiCharacteristic) {
   notifiCharacteristic.addEventListener('characteristicvaluechanged', event => {
+    console.log(event.target);
   })
+}
+
+function handleHR(HRCharacteristic) {
+  HRCharacteristic.addEventListener('characteristicvaluechanged', event => {
+    var data = event.target.value;
+    //var steps = miBand.parseSteps(data);
+    console.debug('NOTIFY', HRCharacteristic.uuid, data);
+
+    //var today = new Date().toJSON().substr(0, 10);
+    // localStorage.setItem(today, (steps - offset > 0) ? steps - offset : steps);
+    //localStorage.setItem(today, steps);
+
+    //updateSteps(steps);
+    //updateStats();
+  });
 }
 
 function handleSteps(stepsCharacteristic) {
