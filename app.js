@@ -48,7 +48,7 @@ statusText.addEventListener('click', function () {
         return Promise.resolve();
       })
       .then(() => miBand.startNotificationsSteps().then(handleSteps))
-      .then(() => miBand.startNotificationsHR().then(handleHR))
+      //.then(() => miBand.startNotificationsHR().then(handleHR))
       .catch(error => {
         statusText.textContent = error;
       });
@@ -57,7 +57,7 @@ statusText.addEventListener('click', function () {
 
 function handleNotifications(notifiCharacteristic) {
   notifiCharacteristic.addEventListener('characteristicvaluechanged', event => {
-    console.log(event.target);
+    console.log(event.target.value);
   })
 }
 
